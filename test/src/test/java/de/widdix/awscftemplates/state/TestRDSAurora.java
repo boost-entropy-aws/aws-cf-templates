@@ -27,7 +27,8 @@ public class TestRDSAurora extends ACloudFormationTest {
                             new Parameter().withParameterKey("ParentVPCStack").withParameterValue(vpcStackName),
                             new Parameter().withParameterKey("ParentClientStack").withParameterValue(clientStackName),
                             new Parameter().withParameterKey("DBName").withParameterValue("db1"),
-                            new Parameter().withParameterKey("DBMasterUserPassword").withParameterValue(password)
+                            new Parameter().withParameterKey("DBMasterUserPassword").withParameterValue(password),
+                            new Parameter().withParameterKey("Engine").withParameterValue("aurora")
                     );
                     // TODO how can we check if this stack works? start a bastion host and try to connect?
                 } finally {
@@ -60,7 +61,7 @@ public class TestRDSAurora extends ACloudFormationTest {
                             "state/rds-aurora.yaml",
                             new Parameter().withParameterKey("ParentVPCStack").withParameterValue(vpcStackName),
                             new Parameter().withParameterKey("ParentClientStack").withParameterValue(clientStackName),
-                            new Parameter().withParameterKey("Engine").withParameterValue("aurora-mysql"),
+                            new Parameter().withParameterKey("Engine").withParameterValue("5.7.mysql-aurora.2.04.3"),
                             new Parameter().withParameterKey("DBName").withParameterValue("db1"),
                             new Parameter().withParameterKey("DBMasterUserPassword").withParameterValue(password)
                     );
@@ -134,7 +135,8 @@ public class TestRDSAurora extends ACloudFormationTest {
                                 new Parameter().withParameterKey("ParentVPCStack").withParameterValue(vpcStackName),
                                 new Parameter().withParameterKey("ParentClientStack").withParameterValue(clientStackName),
                                 new Parameter().withParameterKey("ParentSecretStack").withParameterValue(secretStackName),
-                                new Parameter().withParameterKey("DBName").withParameterValue("db1")
+                                new Parameter().withParameterKey("DBName").withParameterValue("db1"),
+                                new Parameter().withParameterKey("Engine").withParameterValue("aurora")
                         );
                         // TODO how can we check if this stack works? start a bastion host and try to connect?
                     } finally {
